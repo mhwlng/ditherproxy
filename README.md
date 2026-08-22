@@ -17,6 +17,7 @@ https://mhwlng.github.io/ditherproxy/test/chart1\.jpg
 
 https://mhwlng.github.io/ditherproxy/test/chart1-config.json
 
+local docker container:
 
 http://127.0.0.1:3000/?url=https://mhwlng.github.io/ditherproxy/test/chart1.jpg&jsonurl=https://mhwlng.github.io/ditherproxy/test/chart1-config.json
 
