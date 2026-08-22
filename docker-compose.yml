@@ -1,11 +1,7 @@
 services:
     ditherproxy:
-        image: mhwlng/ditherproxy:main
+        image: mhwlng/ditherproxy:latest
         container_name: ditherproxy
         restart: unless-stopped
         ports:
             - 3000:3000
-#        build:
-#          context: .
-#          dockerfile: ./dockerfile
-#        image: ditherproxy

@@ -6,7 +6,7 @@ on:
   push:
     branches: [ "main" ]
     # Publish semver tags as releases.
-    tags: [ 'v*.*.*' ]
+#    tags: [ 'v*.*.*' ]
 #  pull_request:
 #    branches: [ "main" ]
 
@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: get repository name
         run: echo "REPOSITORY_NAME=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
@@ -26,7 +26,7 @@ jobs:
           echo "VERSION=$VERSION" >> $GITHUB_ENV
 
       - name: Show version number
-        run: echo "Version is ${{ steps.package-version.outputs.version }}"
+        run: echo "Version is ${{ env.VERSION }}"
         
       - name: Extract Docker image metadata
         id: meta
