@@ -45,7 +45,7 @@ jobs:
         with:
           push: ${{ github.event_name != 'pull_request' }}
           tags: | 
-           ${{ vars.DOCKER_USERNAME }}/ditherproxy:${{ steps.package-version.outputs.version  }} , 
+           ${{ vars.DOCKER_USERNAME }}/ditherproxy:${{ steps.package-version.outputs.version  }} 
            ${{ vars.DOCKER_USERNAME }}/ditherproxy:latest
            
           annotations: ${{ steps.meta.outputs.annotations }}
