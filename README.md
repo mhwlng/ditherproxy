@@ -2,6 +2,10 @@
 proxy server for dithering images, using the epdoptimize library
 
 
+https://github.com/paperlesspaper/epdoptimize
+
+
+
 
 
 // docker build -t ditherproxy .

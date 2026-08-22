@@ -1,10 +1,14 @@
 name: Build and Push Docker Image
 
 on:
+#  schedule:
+#    - cron: '22 9 * * *'
   push:
-    branches:
-      - main
-  pull_request:
+    branches: [ "main" ]
+    # Publish semver tags as releases.
+    tags: [ 'v*.*.*' ]
+#  pull_request:
+#    branches: [ "main" ]
 
 jobs:
   build:
