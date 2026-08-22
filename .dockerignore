@@ -1,0 +1,41 @@
+# Dependencies — will be reinstalled
+node_modules
+
+# Dev artifacts
+.git
+.gitignore
+*.log
+npm-debug.log*
+
+# Tests
+test/
+tests/
+coverage/
+*.test.js
+*.spec.js
+
+# Documentation
+docs/
+*.md
+!README.md
+
+# Development config
+.env
+.env.local
+.env.*.local
+.eslintrc*
+.prettierrc*
+jest.config.*
+
+# Build outputs (if committing dist, you may need to adjust)
+dist/
+build/
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+Dockerfile
+.dockerignore
