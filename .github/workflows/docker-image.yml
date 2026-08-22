@@ -17,9 +17,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Read package.json
-        uses: zvonimirsun/read-package-version-actions@v2
-        id: package-version
+      - name: get repository name
+        run: echo "REPOSITORY_NAME=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
+
+      - name: Extract version from package.json
+        run: |
+          VERSION=$(jq -r '.version' package.json)
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
 
       - name: Show version number
         run: echo "Version is ${{ steps.package-version.outputs.version }}"
@@ -28,7 +32,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v6
         with:
-          images: ${{ vars.DOCKER_USERNAME }}/ditherproxy
+          images: ${{ vars.DOCKER_USERNAME }}/${{ env.REPOSITORY_NAME }}
 
       - name: Log in to Docker Hub
         if: github.event_name != 'pull_request'
@@ -45,8 +49,8 @@ jobs:
         with:
           push: ${{ github.event_name != 'pull_request' }}
           tags: | 
-           ${{ vars.DOCKER_USERNAME }}/ditherproxy:${{ steps.package-version.outputs.version  }} 
-           ${{ vars.DOCKER_USERNAME }}/ditherproxy:latest
+           ${{ vars.DOCKER_USERNAME }}/${{ env.REPOSITORY_NAME }}:${{ env.VERSION }} 
+           ${{ vars.DOCKER_USERNAME }}/${{ env.REPOSITORY_NAME }}:latest
            
           annotations: ${{ steps.meta.outputs.annotations }}
           provenance: true
