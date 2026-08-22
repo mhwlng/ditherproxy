@@ -1,0 +1,40 @@
+{
+  "palette": [
+    {
+      "name": "black",
+      "color": "#000000",
+      "deviceColor": "#000000"
+    },
+    {
+      "name": "white",
+      "color": "#FFFFFF",
+      "deviceColor": "#FFFFFF"
+    },
+    {
+      "name": "red",
+      "color": "#FF0000",
+      "deviceColor": "#FF0000"
+    }
+  ],
+  "imageAdjustmentOptions": {
+    "toneMapping": {
+      "exposure": -0.7,
+      "saturation": -0.35,
+      "contrast": 0.4,
+      "strength": 0.85,
+      "shadowBoost": 0.45,
+      "highlightCompress": 1,
+      "midpoint": 0.5
+    },
+    "clarity": {
+      "amount": 1,
+      "radius": 2,
+      "midtone": 1.2
+    }
+  },
+  "canvasDitherOptions": {
+    "ditheringType": "quantizationOnly",
+    "serpentine": true,
+    "colorMatching": "chroma"
+  }
+}
