@@ -17,7 +17,6 @@ https://mhwlng.github.io/ditherproxy/test/chart1.jpg
 
 https://mhwlng.github.io/ditherproxy/test/chart1-config.json
 
-
 Example image and json file for a spectra e-paper display:
 
 https://mhwlng.github.io/ditherproxy/test/cat1.jpg
@@ -40,6 +39,11 @@ http://127.0.0.1:3000/?url=https%3A%2F%2Fmhwlng%2Egithub%2Eio%2Fditherproxy%2Fte
 
 http://127.0.0.1:3000/?url=https%3A%2F%2Fmhwlng%2Egithub%2Eio%2Fditherproxy%2Ftest%2Fcat1%2Ejpg&jsonurl=https%3A%2F%2Fmhwlng%2Egithub%2Eio%2Fditherproxy%2Ftest%2Fcat1-config%2Ejson
 
+The resulting dithered images (always png) look like:
+
+https://mhwlng.github.io/ditherproxy/test/chart1-result.png
+
+https://mhwlng.github.io/ditherproxy/test/cat1-result.png
 
 There is also a health check url:
 
