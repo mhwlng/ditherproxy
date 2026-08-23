@@ -1,7 +1,7 @@
 {
   "name": "ditherproxy",
   "version": "0.0.1",
-  "description": "proxy server for dithering images, using the epdoptimize library",
+  "description": "Proxy server for dithering images, for epaper displays, using the epdoptimize library.",
   "homepage": "https://github.com/xxxxxxxxxxxx",
   "license": "Apache-2.0",
   "keywords": [
