@@ -139,7 +139,6 @@ async function dither(
         ...config.imageAdjustmentOptions,
         ...config.canvasDitherOptions,
 	palette : palette
-        ,
     } );
         
     epdoptimize.replaceColors(int, dst, palette as epdoptimizetype.PaletteColorEntry[]);
