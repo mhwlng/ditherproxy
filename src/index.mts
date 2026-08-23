@@ -32,7 +32,7 @@ const limiter = rateLimit({
 interface DitherConfig {
   imageAdjustmentOptions: epdoptimizetype.DitherImageOptions;
   canvasDitherOptions: epdoptimizetype.DitherImageOptions;
-  palette: epdoptimizetype.PaletteColorEntry[];
+  palette: string | epdoptimizetype.PaletteColorEntry[];
 }
 
 const app = express();
@@ -128,13 +128,21 @@ async function dither(
 
     const dst = createCanvas(img.width, img.height);
 
+    var palette = config.palette;
+    
+    if (typeof palette == "string")
+    {
+        palette = eval("epdoptimize."+palette);
+    }
+    
     await epdoptimize.ditherImage(src, int, {
         ...config.imageAdjustmentOptions,
         ...config.canvasDitherOptions,
-        palette : config.palette,
+	palette : palette
+        ,
     } );
         
-    epdoptimize.replaceColors(int, dst, config.palette);
+    epdoptimize.replaceColors(int, dst, palette as epdoptimizetype.PaletteColorEntry[]);
 
     return dst.toBuffer("image/png");
 }
