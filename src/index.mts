@@ -139,7 +139,7 @@ async function dither(
     return dst.toBuffer("image/png");
 }
 
-app.get("/", async (req: Request, res: Response) => {
+app.get(['/', '/ditherproxy'], async (req: Request, res: Response) => {
 
     const { url: imageUrl, jsonurl: jsonUrl } = req.query;
 
