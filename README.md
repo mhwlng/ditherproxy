@@ -17,7 +17,7 @@ https://mhwlng.github.io/ditherproxy/test/chart1-config.json
 
 These files can be found in the 'test' folder.
 
-Create docker a container as defined in docker-compose.yml:
+Create a docker container, as defined in docker-compose.yml:
 
 docker-compose -f docker-compose.yml up -d
 
