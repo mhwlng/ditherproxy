@@ -18,18 +18,24 @@
   ],
   "imageAdjustmentOptions": {
     "toneMapping": {
-      "exposure": -0.7,
-      "saturation": -0.35,
-      "contrast": 0.4,
+      "exposure": -0.05,
+      "saturation": -0.2,
+      "contrast": 0.25,
       "strength": 0.85,
-      "shadowBoost": 0.45,
-      "highlightCompress": 1,
+      "shadowBoost": -0.2,
+      "highlightCompress": 0,
       "midpoint": 0.5
     },
     "clarity": {
-      "amount": 1,
+      "amount": 0.5284535621605742,
       "radius": 2,
       "midtone": 1.2
+    },
+    "dynamicRangeCompression": {
+      "mode": "display",
+      "strength": 0.65,
+      "lowPercentile": 0.02,
+      "highPercentile": 0.98
     }
   },
   "canvasDitherOptions": {
