@@ -1,0 +1,15 @@
+{
+  "palette": "spectra6BoeberPalette",
+  "imageAdjustmentOptions": {
+    "dynamicRangeCompression": {
+      "mode": "display",
+      "strength": 0.7,
+      "lowPercentile": 0.01,
+      "highPercentile": 0.99
+    }
+  },
+  "canvasDitherOptions": {
+    "serpentine": true,
+    "errorDiffusionMatrix": "jarvisJudiceNinke"
+  }
+}
