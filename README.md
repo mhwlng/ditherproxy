@@ -45,6 +45,11 @@ https://mhwlng.github.io/ditherproxy/test/chart1-result.png
 
 https://mhwlng.github.io/ditherproxy/test/cat1-result.png
 
+Here is a photograph of 3 different epaper displays, with the above test images:
+
+https://mhwlng.github.io/ditherproxy/test/epaper-results.jpg
+
+
 There is also a health check url:
 
 http://127.0.0.1:3000/health
