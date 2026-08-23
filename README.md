@@ -1,5 +1,5 @@
 # ditherproxy
-Proxy server docker image, for dithering images, using the epdoptimize library.
+Proxy server docker image, for dithering images, for epaper displays, using the epdoptimize library.
 
 This uses the epdoptimize library: https://github.com/paperlesspaper/epdoptimize
 
