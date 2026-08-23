@@ -14,7 +14,7 @@ import * as http from "node:http";
 import * as https from "node:https";
 import path from "node:path";
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
 
