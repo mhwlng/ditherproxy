@@ -5,10 +5,24 @@ This uses the epdoptimize library: https://github.com/paperlesspaper/epdoptimize
 
 The docker image is here: https://hub.docker.com/r/mhwlng/ditherproxy/tags
 
-You need two urls:
+The source image can be jpg or png.
 
-1) A URL of the original image.
-2. A URL pointing to a json file, containing the dithering configuration parameters.<br>
+The dithered output image is always png.
+
+The dithered output image can also be returned as a binary file (application/octet-stream), appropriate for a specific epaper display.
+
+Currently binary images are supported for:
+
+- BWR displays  (Black, White, Red)  
+Add &tobin=10 or &tobin=15 to the end of url (both numbers result in the same data)
+	
+-  SPECTRA displays (Black,White,Yellow,Red,Blue,Green)    
+Add &tobin=23 to the end of url
+
+You need two urls as (urlencoded) query parameters:
+
+1) url = A URL of the original image.
+2. jsonurl = A URL pointing to a json file, containing the dithering configuration parameters.  
  That json file can be created on the epdoptimize site: https://paperlesspaper.github.io/epdoptimize/
 
 Example image and json file for a BWR e-paper display:
@@ -33,11 +47,10 @@ docker-compose -f docker-compose.yml up -d
 
 Using a local docker container:
 
-You need to urlencode the urls to the image and to the json file:
 
-http://127.0.0.1:3000/?url=https%3A%2F%2Fmhwlng%2Egithub%2Eio%2Fditherproxy%2Ftest%2Fchart1%2Ejpg&jsonurl=https%3A%2F%2Fmhwlng%2Egithub%2Eio%2Fditherproxy%2Ftest%2Fchart1-config%2Ejson
+http://127.0.0.1:3000/?url=https%3A%2F%2Fmhwlng.github.io%2Fditherproxy%2Ftest%2Fchart1.jpg&jsonurl=https%3A%2F%2Fmhwlng.github.io%2Fditherproxy%2Ftest%2Fchart1-config.json
 
-http://127.0.0.1:3000/?url=https%3A%2F%2Fmhwlng%2Egithub%2Eio%2Fditherproxy%2Ftest%2Fcat1%2Ejpg&jsonurl=https%3A%2F%2Fmhwlng%2Egithub%2Eio%2Fditherproxy%2Ftest%2Fcat1-config%2Ejson
+http://127.0.0.1:3000/?url=https%3A%2F%2Fmhwlng.github.io%2Fditherproxy%2Ftest%2Fcat1.jpg&jsonurl=https%3A%2F%2Fmhwlng.github.io%2Fditherproxy%2Ftest%2Fcat1-config.json
 
 The resulting dithered images (always png) look like:
 
@@ -48,7 +61,6 @@ https://mhwlng.github.io/ditherproxy/test/cat1-result.png
 Here is a photograph of 3 different epaper displays, with the above test images:
 
 https://mhwlng.github.io/ditherproxy/test/epaper-results.jpg
-
 
 There is also a health check url:
 
@@ -81,9 +93,9 @@ services:
         image: nginx:latest
 ~~~
 
-You do not define any port bindings in the ditherproxy service, so that the ditherproxy web server is not reachable outside nginx
+In this case, you do not define any port bindings in the ditherproxy service, so that the ditherproxy web server is not reachable outside nginx
 
-you can add something like this to your nginx .conf file:
+You can add something like this to your nginx .conf file:
 
 ~~~
    location /ditherproxy/ {
