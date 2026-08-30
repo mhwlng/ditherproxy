@@ -21,9 +21,6 @@
     "express-rate-limit": "^8.7.0",
     "helmet": "^8.3.0"
   },
-  "allowScripts": {
-    "canvas@3.2.3": true
-  },
   "devDependencies": {
     "@types/express": "5.0.6",
     "@types/node": "26.4.0",
