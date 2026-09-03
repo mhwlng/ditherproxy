@@ -195,7 +195,7 @@ app.get(['/', '/ditherproxy'], async (req: Request, res: Response) => {
                     }
 
                     break;
-                case "21": // DL1330W6 (SPECTRA6 1699x1200)
+                case "21": // DL1330W6 (SPECTRA6 1600x1200)
 
                     var binBuffer3 = toDoubleE6Buffer(
                         imageData.data, 

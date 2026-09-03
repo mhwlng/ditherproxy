@@ -16,8 +16,9 @@ Currently binary images are supported for:
 - BWR displays  (Black, White, Red)  
 Add &tobin=10 or &tobin=15 to the end of url (both numbers result in the same data)
 	
--  SPECTRA displays (Black,White,Yellow,Red,Blue,Green)    
-Add &tobin=23 to the end of url
+-  SPECTRA displays (Black,White,Yellow,Red,Blue,Green)  
+Add &tobin=23 to the end of url for 800x480 display  
+Add &tobin=21 to the end of url for 1600x1200 display
 
 You need two urls as (urlencoded) query parameters:
 
@@ -35,15 +36,19 @@ Example image and json file for a spectra e-paper display:
 
 https://mhwlng.github.io/ditherproxy/test/cat1.jpg
 
+https://mhwlng.github.io/ditherproxy/test/cat2.jpg
+
 https://mhwlng.github.io/ditherproxy/test/cat1-config.json
 
 These files can be found in the 'test' folder.
+
 
 You can create a ditherproxy docker container, as defined in docker-compose.yml:
 
 ~~~
 docker-compose -f docker-compose.yml up -d
 ~~~
+
 
 Using a local docker container:
 
@@ -52,15 +57,24 @@ http://127.0.0.1:3000/?url=https%3A%2F%2Fmhwlng.github.io%2Fditherproxy%2Ftest%2
 
 http://127.0.0.1:3000/?url=https%3A%2F%2Fmhwlng.github.io%2Fditherproxy%2Ftest%2Fcat1.jpg&jsonurl=https%3A%2F%2Fmhwlng.github.io%2Fditherproxy%2Ftest%2Fcat1-config.json
 
+http://127.0.0.1:3000/?url=https%3A%2F%2Fmhwlng.github.io%2Fditherproxy%2Ftest%2Fcat2.jpg&jsonurl=https%3A%2F%2Fmhwlng.github.io%2Fditherproxy%2Ftest%2Fcat1-config.json
+
+
 The resulting dithered images (always png) look like:
 
 https://mhwlng.github.io/ditherproxy/test/chart1-result.png
 
 https://mhwlng.github.io/ditherproxy/test/cat1-result.png
 
-Here is a photograph of 3 different epaper displays, with the above test images:
+https://mhwlng.github.io/ditherproxy/test/cat2-result.png
+
+
+Here are some photos of various different epaper displays, with the above test images:
 
 https://mhwlng.github.io/ditherproxy/test/epaper-results.jpg
+
+https://mhwlng.github.io/ditherproxy/test/epaper-results2.jpg
+
 
 There is also a health check url:
 
