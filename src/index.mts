@@ -175,7 +175,7 @@ app.get(['/', '/ditherproxy'], async (req: Request, res: Response) => {
                     }
 
                     break;
-                case "23": // DL0730W6 (SPECTRA6)
+                case "23": // DL0730W6 (SPECTRA6 800x480)
 
                     var binBuffer2 = toE6Buffer(
                         imageData.data, 
@@ -195,6 +195,27 @@ app.get(['/', '/ditherproxy'], async (req: Request, res: Response) => {
                     }
 
                     break;
+                case "21": // DL1330W6 (SPECTRA6 1699x1200)
+
+                    var binBuffer3 = toDoubleE6Buffer(
+                        imageData.data, 
+                        img.width, 
+                        img.height);
+
+                    if (binBuffer3)
+                    {
+                        res.contentType("application/octet-stream");
+                        console.log (binBuffer3.byteLength);    
+                        res.end(binBuffer3);    
+
+                        return;
+
+                    } else {
+                         return res.status(500).send("toDoubleE6Buffer failed");
+                    }
+
+                    break;
+
             }
         }
 
