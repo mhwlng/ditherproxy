@@ -7,6 +7,8 @@ The docker image is here: https://hub.docker.com/r/mhwlng/ditherproxy/tags
 
 The source image can be jpg or png.
 
+The source image can be rotated, by adding &rotate=angle to the end of the url. (where angle=90, 180 or 270)
+
 The dithered output image is always png.
 
 The dithered output image can also be returned as a binary file (application/octet-stream), appropriate for a specific epaper display.
@@ -57,7 +59,7 @@ http://127.0.0.1:3000/?url=https%3A%2F%2Fmhwlng.github.io%2Fditherproxy%2Ftest%2
 
 http://127.0.0.1:3000/?url=https%3A%2F%2Fmhwlng.github.io%2Fditherproxy%2Ftest%2Fcat1.jpg&jsonurl=https%3A%2F%2Fmhwlng.github.io%2Fditherproxy%2Ftest%2Fcat1-config.json
 
-http://127.0.0.1:3000/?url=https%3A%2F%2Fmhwlng.github.io%2Fditherproxy%2Ftest%2Fcat2.jpg&jsonurl=https%3A%2F%2Fmhwlng.github.io%2Fditherproxy%2Ftest%2Fcat1-config.json
+http://127.0.0.1:3000/?url=https%3A%2F%2Fmhwlng.github.io%2Fditherproxy%2Ftest%2Fcat2.jpg&jsonurl=https%3A%2F%2Fmhwlng.github.io%2Fditherproxy%2Ftest%2Fcat1-config.json&rotate=270
 
 
 The resulting dithered images (always png) look like:
