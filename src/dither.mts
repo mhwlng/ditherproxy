@@ -17,14 +17,14 @@ export async function dither(
     config: DitherConfig
     ) : Promise<Canvas> {
 
-	const src = createCanvas(img.width, img.height);
+    const src = createCanvas(img.width, img.height);
 
     const srcCtx = src.getContext("2d");
-	srcCtx.drawImage(img, 0, 0);
+    srcCtx.drawImage(img, 0, 0);
 
-	const int = createCanvas(img.width, img.height);
+    const int = createCanvas(img.width, img.height);
 
-	const dst = createCanvas(img.width, img.height);
+    const dst = createCanvas(img.width, img.height);
 
     var palette = config.palette;
 

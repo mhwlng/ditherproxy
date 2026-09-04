@@ -42,6 +42,36 @@ app.use(limiter);
 
 app.use(helmet());
 
+export function rotateImage(
+  image: Image,
+  angle: number
+
+): Promise<Image> {
+
+  if (![0, 90, 180, 270].includes(angle)) {
+    throw new Error(`Invalid angle: ${angle}`);
+  }
+
+  var w = image.width;
+  var h = image.height;
+
+  if (angle === 90 || angle === 270) {
+    w = image.height;
+    h = image.width;
+  } 
+
+  const canvas = createCanvas(w, h);
+  const ctx = canvas.getContext('2d');
+
+  ctx.translate(canvas.width / 2, canvas.height / 2);
+
+  ctx.rotate((angle * Math.PI) / 180);
+
+  ctx.drawImage(image, -image.width / 2, -image.height / 2);
+
+  return canvas;
+}
+
 function isValidHttpUrl(urlString: string): boolean {
   try {
     const url = new URL(urlString);
@@ -115,30 +145,45 @@ async function httpGet(url: string | URL): Promise<Buffer> {
   });
 }
 
-
 app.get(['/', '/ditherproxy'], async (req: Request, res: Response) => {
 
-    const { url: imageUrl, jsonurl: jsonUrl, tobin: toBin } = req.query;
+    var { url: imageUrl, jsonurl: jsonUrl, tobin: toBin, rotate: rotate } = req.query;
+
+    if (!rotate) {
+      rotate = "0";
+    }
+
+    if (!["0", "90", "180", "270"].includes(rotate)) {
+      return res.status(400).send(`Invalid angle: ${rotate}`);
+    }
+
+    const angle:number = parseInt(rotate as string)
 
     if (!imageUrl || !jsonUrl) {
-        return res.status(400).send("Missing required parameters: url and jsonurl");
+      return res.status(400).send("Missing required parameters: url and jsonurl");
     }
 
     if (!isValidHttpUrl(imageUrl as string)) {
-        return res.status(400).send(`imageurl is not a valid url ${imageUrl}`);
-     }
+      return res.status(400).send(`imageurl is not a valid url ${imageUrl}`);
+    }
+
     if (!isValidHttpUrl(jsonUrl as string)) {
-        return res.status(400).send(`jsonurl is not a valid url ${jsonUrl}`);
+      return res.status(400).send(`jsonurl is not a valid url ${jsonUrl}`);
     }
 
     try {
 
-        const [img, jsonBuffer] = await Promise.all([
+        var [img, jsonBuffer] = await Promise.all([
             loadImageWithTimeout(imageUrl as string),
             httpGet(jsonUrl as string),
         ]);   
 
         const config: DitherConfig = JSON.parse(jsonBuffer.toString('utf-8'));
+
+        if (angle > 0)
+        {
+          img = rotateImage(img, angle);
+        }
 
         var ditherCanvas = await dither(img,config);
 
