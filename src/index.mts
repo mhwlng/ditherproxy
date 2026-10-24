@@ -14,12 +14,12 @@ import helmet from "helmet";
 import * as http from "node:http";
 import * as https from "node:https";
 import path from "node:path";
+import process from 'node:process';
 
 import { dither } from "./dither.mts";
 import type { DitherConfig } from "./dither.mts";
 
 import { toRGBBuffer, toE6Buffer, toDoubleE6Buffer } from "./binbuffer.mts";
-
 
 const port = process.env.PORT || 3000;
 
@@ -315,3 +315,5 @@ process.on('SIGTERM', () => {
   }, 25000); 
 });
 
+
+console.log(process.versions);
